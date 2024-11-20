@@ -4,6 +4,7 @@ import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
 import { NeonIcon } from './_icons/NeonIcon';
 import { ClerkIcon } from './_icons/ClerkIcon';
+import { subscriptionTiersInOrder } from '@/data/subscriptionTiers';
 
 export default function HomePage() {
   return (
@@ -61,6 +62,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <section id='pricing' className=' px-8 py-16 bg-accent/5'>
+        <h2 className='text-4xl text-center text-balance font-semibold mb-8'>
+          Pricing software which pays for itself 20x over
+        </h2>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto'>
+          {subscriptionTiersInOrder.map((tier) => (
+            <PricingCard key={tier.name} {...tier} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }
+
+function PricingCard({
+  name,
+  priceInCents,
+  maxNumberOfVisits,
+  maxNumberOfProducts,
+  canRemoveBranding,
+  canAccessAnalytics,
+  canCustomizeBanner,
+}: (typeof subscriptionTiersInOrder)[number]) {}
