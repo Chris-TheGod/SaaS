@@ -5,6 +5,13 @@ import Link from 'next/link';
 import { NeonIcon } from './_icons/NeonIcon';
 import { ClerkIcon } from './_icons/ClerkIcon';
 import { subscriptionTiersInOrder } from '@/data/subscriptionTiers';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { formatCompactNumber } from '@/lib/formatters';
 
 export default function HomePage() {
   return (
@@ -84,4 +91,15 @@ function PricingCard({
   canRemoveBranding,
   canAccessAnalytics,
   canCustomizeBanner,
-}: (typeof subscriptionTiersInOrder)[number]) {}
+}: (typeof subscriptionTiersInOrder)[number]) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>${priceInCents / 100} /mo</CardTitle>
+        <CardDescription>
+          {formatCompactNumber(maxNumberOfVisits)} pricing page visits/mo
+        </CardDescription>
+      </CardHeader>
+    </Card>
+  );
+}
