@@ -119,8 +119,15 @@ function PricingCard({
           </Button>
         </SignUpButton>
       </CardContent>
-      <CardFooter>
-        <Feature>ss</Feature>
+      <CardFooter className='flex-col gap-4 items-start'>
+        <Feature className='font-bold'>
+          {maxNumberOfProducts}{' '}
+          {maxNumberOfProducts === 1 ? 'product' : 'products'}
+        </Feature>
+        <Feature>PPP Discounts</Feature>
+        {canAccessAnalytics && <Feature>Advanced analytics</Feature>}
+        {canRemoveBranding && <Feature>Remove Easy PPP branding</Feature>}
+        {canCustomizeBanner && <Feature>Banner customization</Feature>}
       </CardFooter>
     </Card>
   );
