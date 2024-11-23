@@ -3,6 +3,8 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
+  console.log('git');
+
   return (
     <div className='min-h-screen flex flex-col justify-center items-center'>
       {children}
